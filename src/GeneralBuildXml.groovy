@@ -21,6 +21,7 @@ class GeneralBuildXml {
             def fragmentNode = new XmlParser().parseText(fragment)
             target.children().add(fragmentNode)
         }
+        return ""
     }
 
     def excludeFile(String[] files) {
@@ -34,6 +35,13 @@ class GeneralBuildXml {
             def fragmentNode = new XmlParser().parseText(fragment)
             target.children().add(fragmentNode)
         }
+        return ""
+    }
+
+    void transfer(closure){
+        println(22)
+        closure.delegate = this
+        closure()
     }
 
     def getXmlString() {
